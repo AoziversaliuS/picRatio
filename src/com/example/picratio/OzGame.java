@@ -18,7 +18,7 @@ public class OzGame {
 	static AABB   aabb;
 	static Vec2   gravity;
 	static World  engine;
-	static ArrayList<Body> boxArray;
+	static ArrayList<Body> boxArray = new ArrayList<Body>();
 	static boolean Touch = false;
 	static float x = 0;
 	static float y = 0;
@@ -30,9 +30,10 @@ public class OzGame {
 		gravity = new Vec2(0,10);
 		engine = new World(aabb, gravity, true);
 		engine.step(refreshTime, iterations);
+		System.out.println(" 载入引擎成功！"+GameView.i);
 	}
 	static void logic(){
-		if(Touch = true){
+		if(Touch == true){
 			new Box(x, y, 50, 50, engine, boxArray);
 			Touch = false;
 		}
@@ -40,9 +41,8 @@ public class OzGame {
 	
 	static void show(Canvas canvas,Paint paint){
 		Vec2 position;
-		
-		P.pictureDraw(P.pic, 50, 50, paint, canvas);
-		
+		P.pictureDraw(P.pic, 0, 0, paint, canvas);
+		System.out.println("箱子个数 ： "+boxArray.size());
 		for(int i=0;i<boxArray.size();i++){
 			position = boxArray.get(i).getPosition();
 			P.pictureDraw(P.box, position.x-25, position.y-25, paint, canvas);

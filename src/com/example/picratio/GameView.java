@@ -3,6 +3,7 @@ package com.example.picratio;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
@@ -14,6 +15,7 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	private Thread thread;
 	private boolean thread_flag = false;
 	private Canvas canvas;
+	static int i = 0;
 	
 	public GameView(Context context) {
 		super(context);
@@ -21,17 +23,19 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 		sfh.addCallback(this);
 		paint = new Paint();
 		setFocusable(true);
-		OzGame.load(Screen.width, Screen.height);    //载入引擎
 		P.pictureLoad(getResources());              //载入所有图片
+		OzGame.load(Screen.width, Screen.height);    //载入引擎
+		i++;
 	}
 	
 
-//	public boolean onTouchEvent(MotionEvent e) {
-//		OzGame.Touch = true;
-//		OzGame.x = e.getX();
-//		OzGame.y = e.getY();
-//		return true;
-//	}
+	public boolean onTouchEvent(MotionEvent e) {
+		OzGame.Touch = true;
+		OzGame.x = e.getX();
+		OzGame.y = e.getY();
+		System.out.println("触碰的坐标X" + OzGame.x +"触碰的坐标Y"+OzGame.y );
+		return true;
+	}
 
 	public void Draw(){
 		this.canvas = sfh.lockCanvas();
@@ -66,7 +70,7 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 		try {
 			while(this.thread_flag){
 				this.Draw();
-				Thread.sleep((long)(OzGame.refreshTime*1000));
+				Thread.sleep((long)(0.015*1000));
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
