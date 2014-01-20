@@ -3,6 +3,7 @@ package com.example.picratio;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.text.method.Touch;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
@@ -16,6 +17,7 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	private boolean thread_flag = false;
 	private Canvas canvas;
 	static int i = 0;
+	private int count = 0;
 	
 	public GameView(Context context) {
 		super(context);
@@ -30,10 +32,13 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	
 
 	public boolean onTouchEvent(MotionEvent e) {
-		OzGame.Touch = true;
-		OzGame.x = e.getX();
-		OzGame.y = e.getY();
-		System.out.println("触碰的坐标X" + OzGame.x +"触碰的坐标Y"+OzGame.y );
+		if(count>10){
+			OzGame.Touch = true;
+			OzGame.x = e.getX();
+			OzGame.y = e.getY();
+			count = 0;
+			System.out.println("触碰的坐标X" + OzGame.x +"触碰的坐标Y"+OzGame.y );
+		}
 		return true;
 	}
 
@@ -70,8 +75,12 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	public void run() {
 		try {
 			while(this.thread_flag){
+				if(OzGame.Touch == false){
+					this.count++;
+				}
+				System.out.println("计算大小："+count);
 				this.Draw();
-				Thread.sleep((long)(OzGame.refreshTime*1000));
+				Thread.sleep((long)(OzGame.refreshTime*100));
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();

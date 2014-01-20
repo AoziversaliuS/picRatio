@@ -40,8 +40,8 @@ public class OzGame {
 	}
 	static void logic(){
 		if(Touch == true){
+				new Box(OzGame.x, OzGame.y, 50, 50, engine, boxArray);
 //			new Box(500, 300, 50, 50, engine, boxArray);
-			new Box(OzGame.x, OzGame.y, 50, 50, engine, boxArray);
 			Touch = false;
 		}
 	}

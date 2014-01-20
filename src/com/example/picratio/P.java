@@ -17,7 +17,7 @@ public class P {
 		return picZoom;
 	}
 	/**将图片画在屏幕的合适位置*/
-	static void pictureDraw(Bitmap bitmap,float x,float y,Paint paint,Canvas canvas){
+	static void pictureDraw(Bitmap bitmap,int angle,float x,float y,Paint paint,Canvas canvas){
 		canvas.drawBitmap(bitmap, x*Screen.ratioX, y*Screen.ratioY, paint);
 	}
 	/**载入全部图片*/

@@ -9,9 +9,18 @@ import org.jbox2d.dynamics.World;
 
 
 public class Box {
+	static boolean test = false;
 	public Box(float x,float y,float basicWidth,float basicHeight,World engine,ArrayList<Body> array){
 		PolygonDef pd = new PolygonDef();
-		pd.density = 100f;
+		if(test){
+			pd.density = 0;
+			test = false;
+		}
+		else{
+			pd.density = 1;
+			test = true;
+		}
+//		pd.density = 0;
 		pd.friction = 0.1f;
 		pd.restitution = 0.3f;
 		pd.setAsBox(basicWidth/2, basicHeight/2);
