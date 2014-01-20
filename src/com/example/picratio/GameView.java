@@ -40,6 +40,7 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	public void Draw(){
 		this.canvas = sfh.lockCanvas();
 		if(this.canvas != null){
+			OzGame.engineSimulating();
 			OzGame.logic();
 			OzGame.show(canvas, paint);
 		}
@@ -70,7 +71,7 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 		try {
 			while(this.thread_flag){
 				this.Draw();
-				Thread.sleep((long)(0.015*1000));
+				Thread.sleep((long)(OzGame.refreshTime*1000));
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();

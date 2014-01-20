@@ -22,19 +22,26 @@ public class OzGame {
 	static boolean Touch = false;
 	static float x = 0;
 	static float y = 0;
-	
+	private static boolean engineCreated = false;
 	static void load(float width,float height){
-		aabb = new AABB();
-		aabb.lowerBound.set(0, 0);
-		aabb.upperBound.set(width, height);   //最后画的时候才按比例来画，现在在做基准屏幕下的参照。
-		gravity = new Vec2(0,10);
-		engine = new World(aabb, gravity, true);
+		if(!engineCreated){
+			aabb = new AABB();
+			aabb.lowerBound.set(0, 0);
+//			System.out.println("物理引擎范围：" +width+"   "+height);
+			aabb.upperBound.set(width, height);   //最后画的时候才按比例来画，现在在做基准屏幕下的参照。
+			gravity = new Vec2(200.0f,0.0f);
+			engine = new World(aabb, gravity, true);
+			System.out.println(" 载入引擎成功！"+GameView.i);
+			engineCreated = true;
+		}
+	}
+	static void engineSimulating(){
 		engine.step(refreshTime, iterations);
-		System.out.println(" 载入引擎成功！"+GameView.i);
 	}
 	static void logic(){
 		if(Touch == true){
-			new Box(x, y, 50, 50, engine, boxArray);
+//			new Box(500, 300, 50, 50, engine, boxArray);
+			new Box(OzGame.x, OzGame.y, 50, 50, engine, boxArray);
 			Touch = false;
 		}
 	}
@@ -42,7 +49,7 @@ public class OzGame {
 	static void show(Canvas canvas,Paint paint){
 		Vec2 position;
 		P.pictureDraw(P.pic, 0, 0, paint, canvas);
-		System.out.println("箱子个数 ： "+boxArray.size());
+//		System.out.println("箱子个数 ： "+boxArray.size());
 		for(int i=0;i<boxArray.size();i++){
 			position = boxArray.get(i).getPosition();
 			P.pictureDraw(P.box, position.x-25, position.y-25, paint, canvas);
