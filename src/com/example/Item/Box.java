@@ -12,15 +12,15 @@ public class Box {
 	static boolean test = false;
 	public Box(float x,float y,float basicWidth,float basicHeight,World engine,ArrayList<Body> array){
 		PolygonDef pd = new PolygonDef();
-		if(test){
-			pd.density = 0;
-			test = false;
-		}
-		else{
-			pd.density = 1;
-			test = true;
-		}
-//		pd.density = 0;
+//		if(test){
+//			pd.density = 0;
+//			test = false;
+//		}
+//		else{
+//			pd.density = 1;
+//			test = true;
+//		}
+		pd.density = 10f;
 		pd.friction = 0.1f;
 		pd.restitution = 0.3f;
 		pd.setAsBox(basicWidth/2, basicHeight/2);

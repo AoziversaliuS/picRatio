@@ -78,7 +78,7 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 				if(OzGame.Touch == false){
 					this.count++;
 				}
-				System.out.println("计算大小："+count);
+//				System.out.println("计算大小："+count);
 				this.Draw();
 				Thread.sleep((long)(OzGame.refreshTime*100));
 			}
