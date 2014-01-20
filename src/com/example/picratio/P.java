@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 
 public class P {
@@ -17,8 +18,12 @@ public class P {
 		return picZoom;
 	}
 	/**将图片画在屏幕的合适位置*/
-	static void pictureDraw(Bitmap bitmap,int angle,float x,float y,Paint paint,Canvas canvas){
-		canvas.drawBitmap(bitmap, x*Screen.ratioX, y*Screen.ratioY, paint);
+	static void pictureDraw(Bitmap bitmap,float angle,float x,float y,Paint paint,Canvas canvas){
+		Matrix mx = new Matrix();
+		mx.postRotate(angle, 25, 25); /**这里之后要改！！！！！！！！！！！！！*/
+		mx.postTranslate(x*Screen.ratioX,  y*Screen.ratioY);
+		canvas.drawBitmap(bitmap, mx, paint);
+//		canvas.drawBitmap(bitmap, x*Screen.ratioX, y*Screen.ratioY, paint);
 	}
 	/**载入全部图片*/
 	static void pictureLoad(Resources resources){
