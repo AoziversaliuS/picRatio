@@ -48,12 +48,10 @@ public class OzGame {
 	
 	static void show(Canvas canvas,Paint paint){
 		Vec2 position;
-		P.pictureDraw(P.pic,0, 0, 0, paint, canvas);
-//		System.out.println("箱子个数 ： "+boxArray.size());
+		P.pictureDraw(P.pic,1, 50, 50, paint, canvas);
 		for(int i=0;i<boxArray.size();i++){
 			float angle = 0;
 			angle = (float) (boxArray.get(i).getAngle()*180/Math.PI);
-			System.out.println("箱子角度大小： "+boxArray.get(i).getAngle());
 			position = boxArray.get(i).getPosition();
 			P.pictureDraw(P.box,angle, position.x-25, position.y-25, paint, canvas);
 		}
