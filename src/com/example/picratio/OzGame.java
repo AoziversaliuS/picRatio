@@ -48,7 +48,8 @@ public class OzGame {
 	
 	static void show(Canvas canvas,Paint paint){
 		Vec2 position;
-		P.pictureDraw(P.pic,1, 50, 50, paint, canvas);
+//		P.pictureDraw(P.pic,1, 50, 50, paint, canvas);
+		canvas.drawBitmap(GameView.aaa, 0, 0, paint);
 		for(int i=0;i<boxArray.size();i++){
 			float angle = 0;
 			angle = (float) (boxArray.get(i).getAngle()*180/Math.PI);
