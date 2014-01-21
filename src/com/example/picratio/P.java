@@ -23,7 +23,6 @@ public class P {
 		mx.postRotate(angle, 25, 25); /**这里之后要改！！！！！！！！！！！！！*/
 		mx.postTranslate(x*Screen.ratioX,  y*Screen.ratioY);
 		canvas.drawBitmap(bitmap, mx, paint);
-//		canvas.drawBitmap(bitmap, x*Screen.ratioX, y*Screen.ratioY, paint);
 	}
 	/**载入全部图片*/
 	static void pictureLoad(Resources resources){
