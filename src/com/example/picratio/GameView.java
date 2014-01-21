@@ -1,7 +1,6 @@
 package com.example.picratio;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.text.method.Touch;
@@ -19,7 +18,6 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	private Canvas canvas;
 	static int i = 0;
 	private int count = 0;
-	private Bitmap pic;
 	
 	public GameView(Context context) {
 		super(context);
@@ -28,14 +26,13 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 		paint = new Paint();
 		setFocusable(true);
 		P.pictureLoad(getResources());              //载入所有图片
-		pic = P.pictureMake(this.getResources(), R.drawable.pic, 1280, 720);
 		OzGame.load(Screen.width, Screen.height);    //载入引擎
 		i++;
 	}
 	
 
 	public boolean onTouchEvent(MotionEvent e) {
-		if(count>100){
+		if(count>10){
 			OzGame.Touch = true;
 			OzGame.x = e.getX();
 			OzGame.y = e.getY();
@@ -76,32 +73,18 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	
 	@Override
 	public void run() {
-//		try {
+		try {
 			while(this.thread_flag){
-				long start = 0;
-				long end=0;
 				if(OzGame.Touch == false){
 					this.count++;
 				}
 //				System.out.println("计算大小："+count);
-//				this.Draw();
-				this.canvas = sfh.lockCanvas();
-				if(this.canvas != null){
-					OzGame.engineSimulating();
-					OzGame.logic();
-					start = System.currentTimeMillis();
-					canvas.drawBitmap(pic, 0, 0, paint);
-					end = System.currentTimeMillis();
-					OzGame.show(canvas, paint);
-				}
-				sfh.unlockCanvasAndPost(canvas);
-				
-//				Thread.sleep((long)(OzGame.refreshTime*1000));
-				System.out.println("睡眠毫秒："+(end-start)+"  计数："+this.count);
+				this.Draw();
+				Thread.sleep((long)(OzGame.refreshTime*100));
 			}
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
