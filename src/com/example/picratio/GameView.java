@@ -43,13 +43,13 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	}
 
 	public void Draw(){
-		this.canvas = sfh.lockCanvas();
-		if(this.canvas != null){
-			OzGame.engineSimulating();
-			OzGame.logic();
-			OzGame.show(canvas, paint);
-		}
-		sfh.unlockCanvasAndPost(canvas);
+//		this.canvas = sfh.lockCanvas();
+////		if(this.canvas != null){
+////			OzGame.engineSimulating();
+////			OzGame.logic();
+////			OzGame.show(canvas, paint);
+////		}
+//		sfh.unlockCanvasAndPost(canvas);
 	}
 
 	@Override
@@ -73,23 +73,23 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	
 	@Override
 	public void run() {
-		try {
+//		try {
 			while(this.thread_flag){
 				long start = 0;
 				long end   = 0;
 				start = System.currentTimeMillis();
-				if(OzGame.Touch == false){
-					this.count++;
-				}
+//				if(OzGame.Touch == false){
+//					this.count++;
+//				}
 //				System.out.println("计算大小："+count);
 				this.Draw();
-				Thread.sleep((long)(OzGame.refreshTime*1000));
+//				Thread.sleep((long)(OzGame.refreshTime*1000));
 				end = System.currentTimeMillis();
 				System.out.println("耗时："+(end-start));
 			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 	}
 	
 }
