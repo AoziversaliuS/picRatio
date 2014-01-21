@@ -1,8 +1,6 @@
 package com.example.picratio;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.text.method.Touch;
@@ -20,7 +18,6 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	private Canvas canvas;
 	static int i = 0;
 	private int count = 0;
-	static   Bitmap aaa;
 	
 	public GameView(Context context) {
 		super(context);
@@ -29,7 +26,6 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 		paint = new Paint();
 		setFocusable(true);
 		P.pictureLoad(getResources());              //载入所有图片
-		aaa = BitmapFactory.decodeResource(getResources(), R.drawable.pic);
 		OzGame.load(Screen.width, Screen.height);    //载入引擎
 		i++;
 	}
