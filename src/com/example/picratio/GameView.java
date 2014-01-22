@@ -43,13 +43,13 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	}
 
 	public void Draw(){
-//		this.canvas = sfh.lockCanvas();
-////		if(this.canvas != null){
+		this.canvas = sfh.lockCanvas();
+		if(this.canvas != null){
 ////			OzGame.engineSimulating();
 ////			OzGame.logic();
-////			OzGame.show(canvas, paint);
-////		}
-//		sfh.unlockCanvasAndPost(canvas);
+			OzGame.show(canvas, paint);
+		}
+		sfh.unlockCanvasAndPost(canvas);
 	}
 
 	@Override

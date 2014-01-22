@@ -50,7 +50,7 @@ public class OzGame {
 		Vec2 position;
 		P.pictureDraw(P.pic,0,0,0, paint, canvas);
 		P.pictureDraw(P.pic,0,0,0, paint, canvas);
-		P.pictureDraw(P.pic,0,0,0, paint, canvas);
+//		P.pictureDraw(P.pic,0,0,0, paint, canvas);
 		
 		for(int i=0;i<boxArray.size();i++){
 			float angle = 0;
