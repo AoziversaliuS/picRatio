@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 		 Screen.ratioX = Screen.width/1280f;
 		 Screen.ratioY = Screen.height/720f;
 //		 System.out.println("¿í: "+Screen.width+" ¸ß: "+Screen.height+" DPI: "+dm.densityDpi);
-		 Log.v("Screen", "ÆÁÄ»¿í£º "+Screen.width+" ÆÁÄ»¸ß£º "+Screen.height+" DPI: "+dm.densityDpi);
+		 Log.v("Screen", "ÆÁÄ»¿í£º "+Screen.width+" ÆÁÄ»¸ß£º "+Screen.height+" DPI: "+dm.densityDpi+"ratioX: "+Screen.ratioX+"ratioY: "+ Screen.ratioY);
 		setContentView(new GameView(this));
 	}
 

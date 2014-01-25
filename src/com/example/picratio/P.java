@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.util.Log;
 
 public class P {
 	
@@ -27,6 +28,7 @@ public class P {
 		else{
 			mx.postTranslate(x*Screen.ratioX,  y*Screen.ratioY);
 		}
+		Log.v("OzGame", "×ø±êX:"+x*Screen.ratioX+" ×ø±êY: "+y*Screen.ratioY);
 		canvas.drawBitmap(bitmap, mx, paint);
 //		canvas.drawBitmap(bitmap, x*Screen.ratioX, y*Screen.ratioY, paint);
 	}

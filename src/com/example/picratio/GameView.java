@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.text.method.Touch;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
@@ -26,7 +27,7 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 		paint = new Paint();
 		setFocusable(true);
 		P.pictureLoad(getResources());              //载入所有图片
-		OzGame.load(Screen.width, Screen.height);    //载入引擎
+		OzGame.load(Screen.referenceWidth,Screen.referenceHeight);    //载入引擎
 		i++;
 	}
 	
@@ -37,7 +38,7 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 			OzGame.x = e.getX()/Screen.ratioX;
 			OzGame.y = e.getY()/Screen.ratioY;
 			count = 0;
-			System.out.println("触碰的坐标X" + OzGame.x +"触碰的坐标Y"+OzGame.y );
+			Log.v("TouchPoint", "触碰的坐标X" + e.getX() +"触碰的坐标Y"+e.getY() );
 		}
 		return true;
 	}

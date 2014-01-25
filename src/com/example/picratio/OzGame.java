@@ -56,8 +56,8 @@ public class OzGame {
 			angle = (float) (boxArray.get(i).getAngle()*180/Math.PI);
 //			System.out.println("箱子角度大小： "+angle);
 			position = boxArray.get(i).getPosition();
+			Log.v("World_xy", " x:"+position.x+" y:"+position.y);
 			P.pictureDraw(P.box,angle, position.x, position.y, paint, canvas,true);
-			Log.v("OzGame", "坐标X:"+position.x+" 坐标Y: "+position.y);
 		}
 	}
 }
