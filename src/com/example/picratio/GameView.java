@@ -34,8 +34,8 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	public boolean onTouchEvent(MotionEvent e) {
 		if(count>10){
 			OzGame.Touch = true;
-			OzGame.x = e.getX();
-			OzGame.y = e.getY();
+			OzGame.x = e.getX()/Screen.ratioX;
+			OzGame.y = e.getY()/Screen.ratioY;
 			count = 0;
 			System.out.println("触碰的坐标X" + OzGame.x +"触碰的坐标Y"+OzGame.y );
 		}

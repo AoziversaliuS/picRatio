@@ -11,6 +11,7 @@ import com.example.Item.Box;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.Log;
 
 public class OzGame {
 	static float  refreshTime = 0.015f;  //刷新时间
@@ -48,14 +49,15 @@ public class OzGame {
 	
 	static void show(Canvas canvas,Paint paint){
 		Vec2 position;
-		P.pictureDraw(P.pic,0, 0, 0, paint, canvas);
+		P.pictureDraw(P.pic,0, 0, 0, paint, canvas,false);
 //		System.out.println("箱子个数 ： "+boxArray.size());
 		for(int i=0;i<boxArray.size();i++){
 			float angle = 0;
 			angle = (float) (boxArray.get(i).getAngle()*180/Math.PI);
-			System.out.println("箱子角度大小： "+angle);
+//			System.out.println("箱子角度大小： "+angle);
 			position = boxArray.get(i).getPosition();
-			P.pictureDraw(P.box,angle, position.x-25, position.y-25, paint, canvas);
+			P.pictureDraw(P.box,angle, position.x, position.y, paint, canvas,true);
+			Log.v("OzGame", "坐标X:"+position.x+" 坐标Y: "+position.y);
 		}
 	}
 }
