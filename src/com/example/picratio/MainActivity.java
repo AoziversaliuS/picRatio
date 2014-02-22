@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Menu;
 import android.view.Window;
 import android.view.WindowManager;
@@ -27,8 +26,7 @@ public class MainActivity extends Activity {
 		 Screen.height = dm.heightPixels;
 		 Screen.ratioX = Screen.width/1280f;
 		 Screen.ratioY = Screen.height/720f;
-//		 System.out.println("¿í: "+Screen.width+" ¸ß: "+Screen.height+" DPI: "+dm.densityDpi);
-		 Log.v("Screen", "ÆÁÄ»¿í£º "+Screen.width+" ÆÁÄ»¸ß£º "+Screen.height+" DPI: "+dm.densityDpi+"ratioX: "+Screen.ratioX+"ratioY: "+ Screen.ratioY);
+		 System.out.println("¿í: "+Screen.width+" ¸ß: "+Screen.height+" DPI: "+dm.densityDpi);
 		setContentView(new GameView(this));
 	}
 

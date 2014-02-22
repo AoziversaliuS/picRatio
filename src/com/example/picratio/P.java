@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.util.Log;
 
 public class P {
 	
@@ -19,16 +18,10 @@ public class P {
 		return picZoom;
 	}
 	/**将图片画在屏幕的合适位置*/
-	static void pictureDraw(Bitmap bitmap,float angle,float x,float y,Paint paint,Canvas canvas,boolean isCenter){
+	static void pictureDraw(Bitmap bitmap,float angle,float x,float y,Paint paint,Canvas canvas){
 		Matrix mx = new Matrix();
-		mx.postRotate(angle, bitmap.getWidth()/2, bitmap.getHeight()/2); /**这里之后要改！！！！！！！！！！！！！*/
-		if(isCenter){
-			mx.postTranslate(x*Screen.ratioX-bitmap.getWidth()/2,  y*Screen.ratioY-bitmap.getHeight()/2);
-		}
-		else{
-			mx.postTranslate(x*Screen.ratioX,  y*Screen.ratioY);
-		}
-		Log.v("OzGame", "坐标X:"+x*Screen.ratioX+" 坐标Y: "+y*Screen.ratioY);
+		mx.postRotate(angle, 25, 25); /**这里之后要改！！！！！！！！！！！！！*/
+		mx.postTranslate(x*Screen.ratioX,  y*Screen.ratioY);
 		canvas.drawBitmap(bitmap, mx, paint);
 //		canvas.drawBitmap(bitmap, x*Screen.ratioX, y*Screen.ratioY, paint);
 	}

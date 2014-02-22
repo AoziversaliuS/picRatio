@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.text.method.Touch;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
@@ -27,18 +26,18 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 		paint = new Paint();
 		setFocusable(true);
 		P.pictureLoad(getResources());              //载入所有图片
-		OzGame.load(Screen.referenceWidth,Screen.referenceHeight);    //载入引擎
+		OzGame.load(Screen.width, Screen.height);    //载入引擎
 		i++;
 	}
 	
 
 	public boolean onTouchEvent(MotionEvent e) {
-		if(count>10){
+		if(count>100){
 			OzGame.Touch = true;
-			OzGame.x = e.getX()/Screen.ratioX;
-			OzGame.y = e.getY()/Screen.ratioY;
+			OzGame.x = e.getX();
+			OzGame.y = e.getY();
 			count = 0;
-			Log.v("TouchPoint", "触碰的坐标X" + e.getX() +"触碰的坐标Y"+e.getY() );
+			System.out.println("触碰的坐标X" + OzGame.x +"触碰的坐标Y"+OzGame.y );
 		}
 		return true;
 	}
@@ -46,8 +45,8 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	public void Draw(){
 		this.canvas = sfh.lockCanvas();
 		if(this.canvas != null){
-			OzGame.engineSimulating();
-			OzGame.logic();
+////			OzGame.engineSimulating();
+////			OzGame.logic();
 			OzGame.show(canvas, paint);
 		}
 		sfh.unlockCanvasAndPost(canvas);
@@ -74,18 +73,23 @@ public class GameView extends SurfaceView implements Callback,Runnable{
 	
 	@Override
 	public void run() {
-		try {
+//		try {
 			while(this.thread_flag){
-				if(OzGame.Touch == false){
-					this.count++;
-				}
+				long start = 0;
+				long end   = 0;
+				start = System.currentTimeMillis();
+//				if(OzGame.Touch == false){
+//					this.count++;
+//				}
 //				System.out.println("计算大小："+count);
 				this.Draw();
-				Thread.sleep((long)(OzGame.refreshTime*100));
+//				Thread.sleep((long)(OzGame.refreshTime*1000));
+				end = System.currentTimeMillis();
+				System.out.println("耗时："+(end-start));
 			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 	}
 	
 }
